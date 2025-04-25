@@ -9,6 +9,7 @@ urlpatterns=[
     path('players/',PlayersView.as_view(),name='players'),
     path('y_players/',YPlayersView.as_view(),name='y_players'),
     path('tryouts/',TryoutView.as_view(),name='tryouts'),
-    path('about/',AboutView.as_view(),name='about_us')
+    path('about/',AboutView.as_view(),name='about_us'),
+    path('statistics/',StatsView.as_view(),name='stats')
 
 ]

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.context_processors import request
 from django.views import View
 from mainAPP.models import *
 
@@ -8,7 +9,10 @@ class IndexView(View):
 
 class CLubView(View):
     def get(self,request):
-        clubs=Club.objects.all()
+        country = request.GET.get('country')
+        clubs = Club.objects.all()
+        if country is not None:
+            clubs=clubs.filter(country__name=country)
         context={
             'clubs':clubs
         }
@@ -47,3 +51,7 @@ class AboutView(View):
     def get(self,request):
         return render(request,'about.html')
 
+
+class StatsView(View):
+    def get(self,request):
+        return render(request,'stats.html')
